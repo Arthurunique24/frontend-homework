@@ -41,5 +41,31 @@ QUnit.module('Тестируем функцию plainify', function () {
 		};
 
 		assert.deepEqual(plainify(nested2), plain2);
+
+        const nested3 = {
+            deep: {
+                foo: 'bar',
+                baz: 42
+            },
+            feep: {
+                goo: 65,
+                bag: 'parapa'
+            }
+        };
+
+        const plain3 = {
+            'deep.foo': 'bar',
+            'deep.baz': 42,
+            'feep.goo': 65,
+            'feep.bag': 'parapa'
+        };
+
+        assert.deepEqual(plainify(nested3), plain3);
+
+        const nested4 = {};
+
+        const plain4 = {};
+
+        assert.deepEqual(plainify(nested4), plain4);
 	});
 });
